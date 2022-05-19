@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="library.js" defer></script>
+  </head>
+  <body onload="runInitialList()">
+    <!--  user input column  -->
+    <div class="input">
+      <h1>Library</h1>
+      <form action="">
+        <div class="inputField">
+          <input type="text" name="title" id="title">
+          <label for="title">title</label>
+        </div>
+        <div class="inputField">
+          <input type="text" name="author" id="author">
+          <label for="author">author</label>
+        </div>
+        <div class="inputField">
+          <input type="text" name="pages" id="pages"
+            pattern="[0-9]+">
+          <label for="pages"># pages</label>
+        </div>
+        <div class="inputField">
+          <input type="checkbox" name="read" id="read" value="true">
+          <label for="read">read</label>
+        </div>
+        <div class="inputField">
+          <input type="button" value="SUBMIT" id="submit">
+        </div>
+      </form>
+    </div>
+    <!--  book list column  -->
+    <div class="list">
+      <table>
+        <thead>
+          <tr>
+            <th class="left">title</th>
+            <th class="left">author</th>
+            <th>pages</th>
+            <th>status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="listOfBooks">
+        </tbody>
+        <tfoot>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="averageRead"></td>
+          <td></td>
+        </tfoot>
+      </table>
+    </div>
+  </body>
+</html>

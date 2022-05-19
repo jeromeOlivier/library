@@ -1,0 +1,236 @@
+/* typefaces */
+
+@font-face {
+    font-family: 'rSemi';
+    src: url(fonts/readexpro-semibold-webfont.woff2) format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'rLight';
+    src: url(fonts/readexpro-light-webfont.woff2) format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* root elements with light & dark themes */
+
+:root {
+    --full: #000;
+    --text: #222;
+    --background: #eee;
+    --backgroundHover: #e9e9e9;
+    --darkerBackground: #e2e2e2;
+    --darkerBackgroundHover: #dadada;
+    --inputText: #868686;
+    --inputBackground: #ddd;
+    --deleteText: #9d2f2f;
+    --deleteBackground: #f8b3b3;
+    --readText: #547a2d;
+    --readBackground: #ccedab;
+
+    accent-color: #54a800;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --full: #fff;
+        --text: #ddd;
+        --background: #333;
+        --backgroundHover: #313131;
+        --darkerBackground: #2e2e2e;
+        --darkerBackgroundHover: #2c2c2c;
+        --inputText: #777;
+        --inputBackground: #444;
+        --deleteText: #e89797;
+        --deleteBackground: #7a2a2a;
+        --readText: #b9f680;
+        --readBackground: #424f39;
+    }
+}
+
+/* general theme */
+
+body {
+    font-family: rLight, sans-serif;
+    background: var(--background);
+    color: var(--text);
+
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: 300px auto;
+}
+
+
+/* input section */
+
+/* general */
+
+.input {
+    background: var(--inputBackground);
+    padding: 0 2rem;
+}
+
+/* inputs */
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+input[type=text], input[type=number] {
+    background: var(--inputBackground);
+    color: var(--text);
+    font-size: 1rem;
+
+    padding-bottom: .5rem;
+    border: none;
+    border-bottom: solid 1px var(--inputText);
+    width: 100%;
+}
+
+input[type=checkbox], label[for=read] {
+    display: inline;
+    margin-bottom: 3rem;
+}
+
+#pages:invalid {
+    color: var(--deleteText);
+    background: var(--deleteBackground);
+}
+
+input[type=button] {
+    cursor: pointer;
+    font-family: rSemi, sans-serif;
+    font-size: .75rem;
+    padding: .1rem .5rem .15rem;
+    margin: 0;
+    border-radius: 12px;
+}
+
+input[type=button][value=SUBMIT] {
+    color: var(--readText);
+    background: var(--readBackground);
+    border: 1px solid var(--readText);
+}
+
+input[type=button][value=SUBMIT]:hover {
+    color: var(--readBackground);
+    background: var(--readText);
+}
+
+[value=DELETE] {
+    color: var(--deleteText);
+    background: var(--deleteBackground);
+    border: 1px solid var(--deleteText);
+}
+
+input[type=button][value=DELETE]:hover {
+    color: var(--deleteBackground);
+    background: var(--deleteText);
+}
+
+input[type=button][value=READ], input[type=button][value=UNREAD] {
+    color: var(--text);
+    background: var(--background);
+    border: 1px solid var(--text);
+}
+
+input[type=button][value=READ]:hover, input[type=button][value=UNREAD]:hover {
+    color: var(--background);
+    background: var(--text);
+}
+
+input[type=button]:hover {
+    color: var(--text);
+}
+
+/* labels & titles */
+
+label {
+    -webkit-user-select: none;
+    user-select: none;
+    color: var(--inputText);
+    display: block;
+    font-size: .8rem;
+    margin-bottom: 2rem;
+}
+
+input:focus + label {
+    color: var(--text);
+}
+
+label, h1 {
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin: 2.75rem 0;
+}
+
+
+/* book list section */
+
+/* general */
+
+.list {
+    display: grid;
+    justify-content: center;
+    align-items: start;
+    /*padding-top: 1.5rem;*/
+    padding-bottom: 4rem;
+    overflow: scroll;
+}
+
+/* table */
+
+table {
+    width: 60vw;
+    -webkit-border-horizontal-spacing: 0;
+    -webkit-border-vertical-spacing: 0;
+}
+
+th {
+    padding: 3rem 2rem 1rem;
+    background: var(--background);
+    font-family: rSemi, sans-serif;
+    text-transform: uppercase;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+td, th {
+    text-align: center;
+    border-bottom: 1px solid var(--inputText);
+}
+
+td {
+    padding: 1rem 2rem;
+}
+
+.left {
+    max-width: 200px;
+    text-align: left;
+    padding-right: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+tbody > tr:hover {
+    background: var(--darkerBackgroundHover);
+}
+
+tbody > tr > td:hover {
+    border-bottom: 1px solid var(--inputText);
+}
